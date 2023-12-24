@@ -1,0 +1,13 @@
+{
+  "events": [
+    {
+      "event": "OpenWebsite",
+      "args": ["https://www.youtube.com"]
+    },
+    {
+      "event": "OpenApplication",
+      "args": ["notepad.exe"]
+    }
+  ],
+  "response": "I've opened YouTube and Notepad for you. Enjoy!"
+}

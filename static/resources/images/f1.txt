@@ -1,0 +1,2271 @@
+Basic Exercises 
+1.	Write a Scala program to print "Hello, world" 
+
+object HelloWorld {
+  def main(args: Array[String]): Unit = {
+    println("Hello, world")
+  }
+}
+
+
+
+2.	Write a Scala program to compute the sum of the two given integer values. If the two values are the same, then return triples their sum.
+
+object SumOrTripleSum {
+  def main(args: Array[String]): Unit = {
+    // Define two integer values
+    val num1 = 5
+    val num2 = 5
+
+    // Compute the result based on the values
+    val result = computeSumOrTripleSum(num1, num2)
+
+    // Print the result
+    println(s"The result is: $result")
+  }
+
+  def computeSumOrTripleSum(num1: Int, num2: Int): Int = {
+    if (num1 == num2) {
+      3 * (num1 + num2) // Return three times their sum
+    } else {
+      num1 + num2 // Return their sum
+    }
+  }
+}
+
+
+3.	Write a Scala program to exchange the first and last characters in a given string and return the new string.
+
+	object ExchangeFirstAndLastCharacters {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Hello, World!"
+
+    // Exchange the first and last characters in the string
+    val exchangedString = exchangeFirstAndLastCharacters(inputString)
+
+    // Print the result
+    println(s"Original String: $inputString")
+    println(s"Exchanged String: $exchangedString")
+  }
+
+  def exchangeFirstAndLastCharacters(input: String): String = {
+    if (input.length < 2) {
+      input // If the string has 0 or 1 characters, no change is possible
+    } else {
+      val firstChar = input.head
+      val lastChar = input.last
+      val middleChars = input.drop(1).dropRight(1)
+      lastChar + middleChars + firstChar
+    }
+  }
+}
+
+
+4.	Write a Scala program to check whether a given positive number is a multiple of 3 or a multiple of 7.
+
+	object MultipleOf3Or7Check {
+  def main(args: Array[String]): Unit = {
+    // Define a positive number
+    val number = 21
+
+    // Check if the number is a multiple of 3 or 7
+    val isMultipleOf3 = isMultipleOf(number, 3)
+    val isMultipleOf7 = isMultipleOf(number, 7)
+
+    // Print the results
+    println(s"The number $number is a multiple of 3: $isMultipleOf3")
+    println(s"The number $number is a multiple of 7: $isMultipleOf7")
+  }
+
+  def isMultipleOf(number: Int, divisor: Int): Boolean = {
+    number % divisor == 0
+  }
+}
+
+
+5.	Write a Scala program to check whether a given string starts with 'Sc' or not.
+
+	object StringStartsWithCheck {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Scala is a programming language."
+
+    // Check if the string starts with 'Sc'
+    val startsWithSc = startsWith(inputString, "Sc")
+
+    // Print the result
+    println(s"The string starts with 'Sc': $startsWithSc")
+  }
+
+  def startsWith(input: String, prefix: String): Boolean = {
+    input.startsWith(prefix)
+  }
+}
+
+
+
+6.	Write a Scala program to check whether a string 'yt' appears at index 1 in a given string. If it appears, return a string without 'yt' otherwise return the original string.
+
+object CheckAndRemoveYT {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Mythical"
+
+    // Check if 'yt' appears at index 1 and return the modified string
+    val result = checkAndRemoveYT(inputString)
+
+    // Print the result
+    println(s"Original String: $inputString")
+    println(s"Modified String: $result")
+  }
+
+  def checkAndRemoveYT(input: String): String = {
+    if (input.length >= 2 && input.substring(1, 3) == "yt") {
+      input.substring(0, 1) + input.substring(3) // Remove 'yt' if it appears at index 1
+    } else {
+      input // Return the original string if 'yt' doesn't appear at index 1
+    }
+  }
+}
+
+
+7.	 Write a Scala program to find the largest number among three given integers.
+
+object LargestNumberAmongThree {
+  def main(args: Array[String]): Unit = {
+    // Define three integers
+    val num1 = 25
+    val num2 = 50
+    val num3 = 30
+
+    // Find the largest number among the three
+    val largest = findLargestNumber(num1, num2, num3)
+
+    // Print the result
+    println(s"The largest number among $num1, $num2, and $num3 is: $largest")
+  }
+
+  def findLargestNumber(num1: Int, num2: Int, num3: Int): Int = {
+    if (num1 >= num2 && num1 >= num3) {
+      num1
+    } else if (num2 >= num1 && num2 >= num3) {
+      num2
+    } else {
+      num3
+    }
+  }
+}
+
+8.	Write a Scala program to convert the last 4 characters of a given string in upper case. If the length of the string has less than 4 then uppercase all the characters
+
+object UppercaseLast4Characters {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString1 = "Hello, World!"
+    val inputString2 = "Hi"
+
+    // Convert the last 4 characters to uppercase or the entire string if it's less than 4 characters
+    val convertedString1 = convertToUppercase(inputString1)
+    val convertedString2 = convertToUppercase(inputString2)
+
+    // Print the results
+    println(s"Original String 1: $inputString1")
+    println(s"Converted String 1: $convertedString1")
+
+    println(s"Original String 2: $inputString2")
+    println(s"Converted String 2: $convertedString2")
+  }
+
+  def convertToUppercase(input: String): String = {
+    if (input.length < 4) {
+      input.toUpperCase // Uppercase the entire string if it has less than 4 characters
+    } else {
+      val prefix = input.dropRight(4)
+      val suffix = input.takeRight(4).toUpperCase
+      prefix + suffix
+    }
+  }
+}
+
+Control Flow/Function Exercises
+9.	Write a Scala program to check if a given number is even or odd using if/else statements
+object EvenOddCheck {
+  def main(args: Array[String]): Unit = {
+    // Assign a number directly (e.g., 10) or use any predefined number
+    val number = 10  // Replace 10 with your desired number
+    
+    if (number % 2 == 0) {
+      println(s"$number is even.")
+    } else {
+      println(s"$number is odd.")
+    }
+  }
+}
+10.	Write a Scala program to find the factorial of a given number using a while loop
+object FactorialCalculator {
+  def main(args: Array[String]): Unit = {
+    // Provide the number for which you want to calculate the factorial
+    val number = 5 // Replace 5 with your desired number
+    var factorial = 1
+    var i = 1
+    while (i <= number) {
+      factorial *= i
+      i += 1
+    }
+    println(s"Factorial of $number is $factorial")
+  }
+}
+    println(s"Factorial of $number is $factorial")
+  }
+}
+11.	Write a Scala program to print the Fibonacci series up to a given number using a while loop
+object FibonacciSeries {
+  def main(args: Array[String]): Unit = {
+    // Provide the number up to which you want to print the Fibonacci series
+    val limit = 50 // Replace 50 with your desired limit
+    var first = 0
+    var second = 1
+    println("Fibonacci series:")
+    while (first <= limit) {
+      if (first != 0)
+        print(", ")
+      print(first)
+      val next = first + second
+      first = second
+      second = next
+    }
+  }
+}
+12.	Write a Scala program to print the multiplication table of a given number using a for loop
+object MultiplicationTable {
+  def main(args: Array[String]): Unit = {
+    // Provide the number for which you want to print the multiplication
+table
+    val number = 7 // Replace 7 with your desired number
+    println(s"Multiplication table for $number:")
+    for (i <- 1 to 10) {
+      val product = number * i
+      println(s"$number x $i = $product")
+    }
+  }
+}
+13.	Write a Scala program to find the sum of all elements in an array using a for loop
+object ArraySum{
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers
+    val numbers = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    var sum = 0
+    for (number <- numbers) {
+      sum += number
+    }
+    println(s"The sum of all elements in the array is: $sum")
+  }
+}
+14.	Write a Scala program to check if a given string is a palindrome using if/else statements and pattern matching
+object PalindromeChecker {
+  def main(args: Array[String]): Unit = {
+    // Provide the string you want to check for palindrome
+    val inputString = "racecar" // Replace "racecar" with your desired string
+    if (isPalindrome(inputString)) {
+      println(s"$inputString is a palindrome.")
+    } else {
+      println(s"$inputString is not a palindrome.")
+    }
+  }
+  def isPalindrome(str: String): Boolean = {
+    val cleanString = str.toLowerCase.replaceAll("[^a-z0-9]", "")
+    cleanString == cleanString.reverse
+  }
+}
+15.	Write a Scala program to count the number of vowels in a given string using if/else statements and pattern matching
+object VowelCounter {
+  def main(args: Array[String]): Unit = {
+    // Provide the string for which you want to count vowels
+    val inputString = "Hello, World!" // Replace with your desired string
+    val vowelCount = countVowels(inputString)
+    println(s"The number of vowels in the string is: $vowelCount")
+  }
+  def countVowels(str: String): Int = {
+    val cleanedString = str.toLowerCase.replaceAll("[^a-z]", "")
+    var count = 0
+    for (char <- cleanedString) {
+      char match {
+        case 'a' | 'e' | 'i' | 'o' | 'u' => count += 1
+        case _ =>
+      }
+    }
+    count
+  }
+}
+16.	Write a Scala function to reverse a given string.
+
+17.	Write a Scala function to calculate the power of a number
+object PowerCalculator {
+  def calculatePower(base: Double, exponent: Int): Double = {
+    if (exponent == 0) {
+      1.0
+    } else if (exponent > 0) {
+      base * calculatePower(base, exponent - 1)
+    } else {
+      1.0 / (base * calculatePower(base, -exponent))
+    }
+  }
+  def main(args: Array[String]): Unit = {
+    val base = 2.0
+    val exponent = 3
+    val result = calculatePower(base, exponent)
+    println(s"$base^$exponent = $result")
+  }
+}
+Object Oriented Concept Exercises
+18.	Write a Scala program that creates a class called Person with properties like name, age and country. Implement methods to get and set properties. 
+
+import scala.io.StdIn
+class Person{
+    var per_name: String = ""
+    var age:Int = 0
+    var country:String = ""
+    def setName(x: String){
+        per_name = x
+    }
+    def setAge(x: Int){
+        age = x
+    }
+    def setCountry(x: String){
+        country = x
+    }
+    def getName:String = per_name
+    def getAge:Int = age
+    def getCountry:String = country
+    
+}
+
+object Main{
+    def main(args: Array[String]){
+        var per= new Person()
+        println("Enter the name: ")
+        var name = StdIn.readLine()
+        per.setName(name)
+        
+        println("Enter Age: ")
+        var age = StdIn.readInt()
+        per.setAge(age)
+        
+        println("Enter the country: ")
+        var country = StdIn.readLine()
+        per.setCountry(country)
+        
+        println(s"Name: ${per.getName}, Age: ${per.getAge}, Country: ${per.getCountry}")
+    }
+}
+
+
+19.	Write a Scala program that creates a subclass Student that extends the Person class. Add a property called grade and implement methods to get and set it. 
+
+
+
+
+class Person(val firstName: String, val lastName: String) {
+  override def toString: String = s"$firstName $lastName"
+}
+
+class Student(firstName: String, lastName: String, private var _grade: String) extends Person(firstName, lastName) {
+  def grade: String = _grade
+
+  def grade_=(newGrade: String): Unit = {
+    _grade = newGrade
+  }
+
+  override def toString: String = s"${super.toString}, Grade: $grade"
+}
+
+object StudentDemo {
+  def main(args: Array[String]): Unit = {
+    val student = new Student("John", "Doe", "A")
+
+    // Get the initial grade
+    println(s"Initial Grade: ${student.grade}")
+
+    // Set a new grade
+    student.grade = "B"
+    println(s"Updated Grade: ${student.grade}")
+
+    // Print student details
+    println(student)
+  }
+}
+
+
+
+
+
+
+20.	Write a Scala program that creates an object MathUtils with a static method factorial that calculates the factorial of a given number. 
+
+
+
+
+object MathUtils {
+  // Static method to calculate the factorial of a number
+  def factorial(number: Int): Long = {
+    if (number < 0)
+      throw new IllegalArgumentException("Factorial is not defined for negative numbers")
+    else if (number == 0)
+      1
+    else {
+      var result: Long = 1
+      for (i <- 1 to number) {
+        result *= i
+      }
+      result
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    // Calculate the factorial of a number
+    val number = 5 // Change this to the desired number
+    val result = factorial(number)
+    
+    println(s"Factorial of $number is $result")
+  }
+}
+
+
+
+
+
+
+21.	Write a Scala program that creates an abstract class Shape with an abstract method area. Implement subclasses Rectangle and Circle that override the area method.
+
+
+abstract class Shape {
+  def area: Double
+}
+
+class Rectangle(val width: Double, val height: Double) extends Shape {
+  override def area: Double = width * height
+}
+
+class Circle(val radius: Double) extends Shape {
+  override def area: Double = math.Pi * math.pow(radius, 2)
+}
+
+object ShapeDemo {
+  def main(args: Array[String]): Unit = {
+    val rectangle = new Rectangle(5.0, 4.0)
+    val circle = new Circle(3.0)
+
+    // Calculate and print the areas of the shapes
+    println(s"Area of Rectangle: ${rectangle.area}")
+    println(s"Area of Circle: ${circle.area}")
+  }
+}
+
+
+
+
+ 
+
+22.	Write a Scala program that creates a class BankAccount with properties accountNumber and balance. Implement methods to deposit and withdraw money from the account. 
+
+
+
+
+class BankAccount(val accountNumber: String, var balance: Double) {
+  // Method to deposit money into the account
+  def deposit(amount: Double): Unit = {
+    if (amount > 0) {
+      balance += amount
+      println(s"Deposited $amount. New balance: $balance")
+    } else {
+      println("Invalid deposit amount. Amount must be positive.")
+    }
+  }
+
+  // Method to withdraw money from the account
+  def withdraw(amount: Double): Unit = {
+    if (amount > 0 && amount <= balance) {
+      balance -= amount
+      println(s"Withdrew $amount. New balance: $balance")
+    } else if (amount <= 0) {
+      println("Invalid withdrawal amount. Amount must be positive.")
+    } else {
+      println("Insufficient balance for withdrawal.")
+    }
+  }
+}
+
+object BankAccountDemo {
+  def main(args: Array[String]): Unit = {
+    val account = new BankAccount("12345", 1000.0)
+
+    // Deposit money
+    account.deposit(500.0)
+
+    // Withdraw money
+    account.withdraw(200.0)
+  }
+}
+
+
+
+
+
+
+23.	Write a Scala program that creates a class Employee with properties like name, age, and designation. Implement a method to display employee details. 
+
+
+
+class Employee(val name: String, val age: Int, val designation: String) {
+  // Method to display employee details
+  def displayDetails(): Unit = {
+    println(s"Name: $name")
+    println(s"Age: $age")
+    println(s"Designation: $designation")
+  }
+}
+
+object EmployeeDemo {
+  def main(args: Array[String]): Unit = {
+    val employee = new Employee("John Doe", 30, "Software Engineer")
+
+    // Display employee details
+    employee.displayDetails()
+  }
+}
+
+
+
+
+24.	Write a Scala program that creates a class Car with properties like make, model, and year. Implement a method to display car information. 
+
+
+
+
+class Car(val make: String, val model: String, val year: Int) {
+  // Method to display car information
+  def displayCarInfo(): Unit = {
+    println(s"Make: $make")
+    println(s"Model: $model")
+    println(s"Year: $year")
+  }
+}
+
+object CarDemo {
+  def main(args: Array[String]): Unit = {
+    val car = new Car("Toyota", "Camry", 2022)
+
+    // Display car information
+    car.displayCarInfo()
+  }
+}
+
+
+
+
+
+25.	Write a Scala program that creates a class Animal with properties name and sound. Implement a method makeSound that prints the animal's sound. 
+
+
+class Animal(val name: String, val sound: String) {
+  // Method to make the animal sound
+  def makeSound(): Unit = {
+    println(s"$name makes a sound: $sound")
+  }
+}
+
+object AnimalDemo {
+  def main(args: Array[String]): Unit = {
+    val lion = new Animal("Lion", "Roar")
+    val dog = new Animal("Dog", "Bark")
+
+    // Make animal sounds
+    lion.makeSound()
+    dog.makeSound()
+  }
+}
+
+
+
+
+
+
+
+26.	Write a Scala program that creates a class Triangle with properties side1, side2, and side3. Implement a method isEquilateral to check if the triangle is equilateral. 
+
+
+class Triangle(val side1: Double, val side2: Double, val side3: Double) {
+  // Method to check if the triangle is equilateral
+  def isEquilateral: Boolean = {
+    side1 == side2 && side2 == side3
+  }
+}
+
+object TriangleDemo {
+  def main(args: Array[String]): Unit = {
+    val equilateralTriangle = new Triangle(3.0, 3.0, 3.0)
+    val nonEquilateralTriangle = new Triangle(3.0, 4.0, 5.0)
+
+    // Check if triangles are equilateral
+    println("Is the first triangle equilateral? " + equilateralTriangle.isEquilateral)
+    println("Is the second triangle equilateral? " + nonEquilateralTriangle.isEquilateral)
+  }
+}
+
+
+
+
+27.	Write a Scala program that creates a class ContactInfo with properties name, email, and address. Create a class Customer that includes a ContactInfo object.
+
+
+class ContactInfo(val name: String, val email: String, val address: String)
+
+class Customer(val contactInfo: ContactInfo)
+
+object CustomerDemo {
+  def main(args: Array[String]): Unit = {
+    val contact = new ContactInfo("John Doe", "john@example.com", "123 Main St, City")
+    val customer = new Customer(contact)
+
+    // Display customer's contact information
+    println("Customer Information:")
+    println(s"Name: ${customer.contactInfo.name}")
+    println(s"Email: ${customer.contactInfo.email}")
+    println(s"Address: ${customer.contactInfo.address}")
+  }
+}
+Array Exercises
+28.	Write a Scala program to sum values of a given array. 
+object ArraySum {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers
+    val numbers = Array(1, 2, 3, 4, 5)
+
+    // Call the sumArray function to calculate the sum
+    val sum = sumArray(numbers)
+
+    // Print the result
+    println(s"The sum of the array is: $sum")
+  }
+
+  def sumArray(arr: Array[Int]): Int = {
+    // Initialize a variable to store the sum
+    var sum = 0
+
+    // Loop through the array and add each element to the sum
+    for (num <- arr) {
+      sum += num
+    }
+
+    // Return the final sum
+    sum
+  }
+}
+
+29.	Write a Scala program to check if a given number is present in first or last position of a given array of length 1 or more. 
+object FirstOrLastPositionCheck {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers
+    val numbers = Array(1, 2, 3, 4, 5)
+    
+    // Define the number to check
+    val targetNumber = 1
+
+    // Call the checkFirstOrLastPosition function
+    val result = checkFirstOrLastPosition(numbers, targetNumber)
+
+    // Print the result
+    if (result) {
+      println(s"$targetNumber is present in the first or last position of the array.")
+    } else {
+      println(s"$targetNumber is not present in the first or last position of the array.")
+    }
+  }
+
+  def checkFirstOrLastPosition(arr: Array[Int], target: Int): Boolean = {
+    // Check if the array is empty
+    if (arr.isEmpty) {
+      return false
+    }
+
+    // Check if the target number is in the first position or last position
+    if (arr.head == target || arr.last == target) {
+      true
+    } else {
+      false
+    }
+  }
+}
+
+30.	Write a Scala program to calculate the average value of an array of element. 
+object ArrayAverage {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers
+    val numbers = Array(10, 20, 30, 40, 50)
+
+    // Call the calculateAverage function to calculate the average
+    val average = calculateAverage(numbers)
+
+    // Print the result
+    println(s"The average of the array is: $average")
+  }
+
+  def calculateAverage(arr: Array[Int]): Double = {
+    if (arr.isEmpty) {
+      // Handle the case when the array is empty
+      0.0
+    } else {
+      // Calculate the sum of elements in the array as Doubles
+      val sum = arr.map(_.toDouble).sum
+      // Calculate the average by dividing the sum by the number of elements
+      sum / arr.length
+    }
+  }
+}
+
+31.	Write a Scala program to check if the value of the first or last element of a given array (length 1 or more) are same or not. 
+object FirstLastElementEquality {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can change this array)
+    val numbers = Array(10, 20, 30, 40, 10) // Example array
+
+    // Check if the first or last elements are equal
+    val areEqual = checkFirstLastEquality(numbers)
+
+    // Print the result
+    if (areEqual) {
+      println("The first and last elements are the same.")
+    } else {
+      println("The first and last elements are different.")
+    }
+  }
+
+  def checkFirstLastEquality(arr: Array[Int]): Boolean = {
+    if (arr.length >= 1) {
+      arr.head == arr.last
+    } else {
+      // If the array is empty or has only one element
+      false
+    }
+  }
+}
+
+32.	Write a Scala program to find the index of an element in a given Array. 
+object FindElementIndex {
+  def main(args: Array[String]): Unit = {
+    // Define an array of elements (you can replace this with your own array)
+    val elements = Array(10, 20, 30, 40, 50) // Example array
+
+    // Define the element to find
+    val target = 30
+
+    // Call the findIndex function to find the index of the element
+    val index = findIndex(elements, target)
+
+    // Print the result
+    if (index != -1) {
+      println(s"The index of $target is $index")
+    } else {
+      println(s"$target not found in the array.")
+    }
+  }
+
+  def findIndex(arr: Array[Int], target: Int): Int = {
+    val index = arr.indexOf(target)
+    if (index != -1) {
+      // The element is found in the array
+      index
+    } else {
+      // The element is not found in the array
+      -1
+    }
+  }
+}
+
+33.	Write a Scala program to check whether the value of the first or last element of two given array (length 1 or more) of integers are same or not. 
+object FirstAndLastElementComparison {
+  def main(args: Array[String]): Unit = {
+    // Define two arrays of integers (you can replace these with your own arrays)
+    val array1 = Array(10, 20, 30, 40, 10) // Example array 1
+    val array2 = Array(5, 15, 25, 35, 5)   // Example array 2
+
+    // Call the checkFirstAndLastElements function to check if the values are the same
+    val result = checkFirstAndLastElements(array1, array2)
+
+    // Print the result
+    if (result) {
+      println("The first or last elements of both arrays are the same.")
+    } else {
+      println("The first or last elements of both arrays are not the same.")
+    }
+  }
+
+  def checkFirstAndLastElements(arr1: Array[Int], arr2: Array[Int]): Boolean = {
+    if (arr1.isEmpty || arr2.isEmpty) {
+      // Handle the case when either array is empty
+      false
+    } else {
+      // Compare the first or last elements of both arrays for equality
+      (arr1.head == arr2.head && arr1.last == arr2.last) ||
+      (arr1.head == arr2.last && arr1.last == arr2.head)
+    }
+  }
+}
+
+34.	Write a Scala program to remove a specific element from a given array. 
+Note: The size of an Array can't be changed, so we can't directly delete elements from an array but replace them with "" / null etc.
+object RemoveElementFromArray {
+  def main(args: Array[String]): Unit = {
+    // Define an array of elements (you can replace this with your own array)
+    val elements = Array(10, 20, 30, 40, 50) // Example array
+
+    // Element to remove
+    val target = 30
+
+    // Call the removeElement function to remove the element
+    val resultArray = removeElement(elements, target)
+
+    // Print the result
+    println("Original Array:")
+    elements.foreach(e => print(s"$e "))
+    println("\nArray after removal:")
+    resultArray.foreach(e => print(s"$e "))
+  }
+
+  def removeElement(arr: Array[Int], target: Int): Array[Int] = {
+    val sentinel = 0 // Use 0 as the sentinel value
+    val resultArray = arr.map {
+      case `target` => sentinel
+      case other => other
+    }
+    resultArray
+  }
+}
+
+35.	Write a Scala program to rotate one element left of a given array (length 1 or more) of integers. 
+object RotateArrayLeft {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50) // Example array
+
+    // Call the rotateLeft function to rotate the array
+    val rotatedArray = rotateLeft(numbers)
+
+    // Print the result
+    println("Original Array:")
+    numbers.foreach(e => print(s"$e "))
+    println("\nArray after one left rotation:")
+    rotatedArray.foreach(e => print(s"$e "))
+  }
+
+  def rotateLeft(arr: Array[Int]): Array[Int] = {
+    if (arr.isEmpty) {
+      // Handle the case when the array is empty
+      arr
+    } else {
+      // Perform one left rotation by moving elements
+      val firstElement = arr.head
+      val rotatedArray = arr.tail :+ firstElement
+      rotatedArray
+    }
+  }
+}
+
+
+36.	Write a Scala program to find the maximum and minimum value of an array of integers. 
+object MaxMinArrayValues {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50) // Example array
+
+    // Call the findMaxAndMin function to find the maximum and minimum values
+    val (maxValue, minValue) = findMaxAndMin(numbers)
+
+    // Print the result
+    println(s"Maximum value: $maxValue")
+    println(s"Minimum value: $minValue")
+  }
+
+  def findMaxAndMin(arr: Array[Int]): (Int, Int) = {
+    if (arr.isEmpty) {
+      // Handle the case when the array is empty
+      (0, 0)
+    } else {
+      // Use the max and min methods to find the maximum and minimum values
+      val max = arr.max
+      val min = arr.min
+      (max, min)
+    }
+  }
+}
+
+37.	Write a Scala program to calculate the sum of the last 3 elements of an array of integers. If the array length is less than 3 then return the sum of the array. Return 0 if the array is empty.
+object SumLastThreeElements {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50) // Example array
+
+    // Call the sumLastThree function to calculate the sum
+    val sum = sumLastThree(numbers)
+
+    // Print the result
+    println(s"The sum of the last 3 elements (or the entire array): $sum")
+  }
+
+  def sumLastThree(arr: Array[Int]): Int = {
+    if (arr.isEmpty) {
+      // Handle the case when the array is empty
+      0
+    } else if (arr.length < 3) {
+      // If the array length is less than 3, return the sum of the entire array
+      arr.sum
+    } else {
+      // Calculate the sum of the last 3 elements
+      arr.takeRight(3).sum
+    }
+  }
+} 
+
+38.	Write a Scala program to create a new array taking the middle element from three arrays of length 5. 
+object MiddleElementFromThreeArrays {
+  def main(args: Array[String]): Unit = {
+    // Define three arrays of integers, each with a length of 5
+    val array1 = Array(10, 20, 30, 40, 50)
+    val array2 = Array(15, 25, 35, 45, 55)
+    val array3 = Array(12, 22, 32, 42, 52)
+
+    // Call the createMiddleArray function to create a new array with middle elements
+    val middleArray = createMiddleArray(array1, array2, array3)
+
+    // Print the result
+    println("New Array with Middle Elements:")
+    middleArray.foreach(e => print(s"$e "))
+  }
+
+  def createMiddleArray(arr1: Array[Int], arr2: Array[Int], arr3: Array[Int]): Array[Int] = {
+    if (arr1.length == 5 && arr2.length == 5 && arr3.length == 5) {
+      // Extract the middle elements from each array
+      val middleElements = Array(arr1(2), arr2(2), arr3(2))
+      middleElements
+    } else {
+      // Handle the case when array lengths are not as expected
+      Array.empty
+    }
+  }
+}
+
+39.	Write a Scala program to reverse an array of integer values. 
+object ReverseArray {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50) // Example array
+
+    // Call the reverseArray function to reverse the array
+    val reversedArray = reverseArray(numbers)
+
+    // Print the result
+    println("Original Array:")
+    numbers.foreach(e => print(s"$e "))
+    println("\nReversed Array:")
+    reversedArray.foreach(e => print(s"$e "))
+  }
+
+  def reverseArray(arr: Array[Int]): Array[Int] = {
+    arr.reverse
+  }
+}
+
+40.	Write a Scala program to check two numbers, 4 or 7 present in a given array of integers. 
+object CheckNumbersInArray {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(1, 3, 4, 5, 7, 9) // Example array
+
+    // Call the checkNumbers function to check if 4 or 7 are present
+    val result = checkNumbers(numbers)
+
+    // Print the result
+    if (result) {
+      println("The array contains 4 or 7.")
+    } else {
+      println("The array does not contain 4 or 7.")
+    }
+  }
+
+  def checkNumbers(arr: Array[Int]): Boolean = {
+    arr.contains(4) || arr.contains(7)
+  }
+}
+
+41.	Write a Scala program to find the maximum value from first, middle and last values of a given array of integers. Array length should be 1 and more and odd. 
+object MaxOfFirstMiddleLast {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers with an odd length (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50, 60, 70) // Example array
+
+    // Call the findMaxOfFirstMiddleLast function to find the maximum value
+    val max = findMaxOfFirstMiddleLast(numbers)
+
+    // Print the result
+    println(s"The maximum value among the first, middle, and last elements: $max")
+  }
+
+  def findMaxOfFirstMiddleLast(arr: Array[Int]): Int = {
+    if (arr.nonEmpty && arr.length % 2 == 1) {
+      val first = arr.head
+      val middle = arr(arr.length / 2)
+      val last = arr.last
+      Seq(first, middle, last).max
+    } else {
+      // Handle the case when the array is empty or has an even length
+      0
+    }
+  }
+}
+
+42.	Write a Scala program to find the common elements between two arrays of integers. 
+object CommonElements {
+  def main(args: Array[String]): Unit = {
+    // Define two arrays of integers (you can replace these with your own arrays)
+    val array1 = Array(1, 2, 3, 4, 5)
+    val array2 = Array(3, 4, 5, 6, 7)
+
+    // Call the findCommonElements function to find the common elements
+    val commonElements = findCommonElements(array1, array2)
+
+    // Print the result
+    println("Common Elements in the Arrays:")
+    commonElements.foreach(e => print(s"$e "))
+  }
+
+  def findCommonElements(arr1: Array[Int], arr2: Array[Int]): Array[Int] = {
+    val set1 = arr1.toSet
+    val set2 = arr2.toSet
+    set1.intersect(set2).toArray
+  }
+}
+
+43.	Write a Scala program to find the common elements between two arrays of strings.
+object CommonElementsStrings {
+  def main(args: Array[String]): Unit = {
+    // Define two arrays of strings (you can replace these with your own arrays)
+    val array1 = Array("apple", "banana", "orange", "pear", "grape")
+    val array2 = Array("orange", "pear", "kiwi", "grape", "mango")
+
+    // Call the findCommonElements function to find the common elements
+    val commonElements = findCommonElements(array1, array2)
+
+    // Print the result
+    println("Common Elements in the Arrays:")
+    commonElements.foreach(e => print(s"$e "))
+  }
+
+  def findCommonElements(arr1: Array[String], arr2: Array[String]): Array[String] = {
+    val set1 = arr1.toSet
+    val set2 = arr2.toSet
+    set1.intersect(set2).toArray
+  }
+}
+
+44.	Write a Scala program to remove duplicate elements from an array of strings.
+object RemoveDuplicatesFromArrayStrings {
+  def main(args: Array[String]): Unit = {
+    // Define an array of strings with duplicate elements (you can replace this with your own array)
+    val strings = Array("apple", "banana", "apple", "orange", "banana", "pear")
+
+    // Call the removeDuplicates function to remove duplicates
+    val uniqueStrings = removeDuplicates(strings)
+
+    // Print the result
+    println("Array with Duplicates:")
+    strings.foreach(e => print(s"$e "))
+    println("\nArray with Duplicates Removed:")
+    uniqueStrings.foreach(e => print(s"$e "))
+  }
+
+  def removeDuplicates(arr: Array[String]): Array[String] = {
+    arr.distinct
+  }
+}
+
+45.	Write a Scala program to remove duplicate elements from an array of integers.
+object RemoveDuplicatesFromArrayIntegers {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers with duplicate elements (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 20, 40, 50, 10, 60)
+
+    // Call the removeDuplicates function to remove duplicates
+    val uniqueNumbers = removeDuplicates(numbers)
+
+    // Print the result
+    println("Array with Duplicates:")
+    numbers.foreach(e => print(s"$e "))
+    println("\nArray with Duplicates Removed:")
+    uniqueNumbers.foreach(e => print(s"$e "))
+  }
+
+  def removeDuplicates(arr: Array[Int]): Array[Int] = {
+    arr.distinct
+  }
+} 
+
+46.	Write a Scala program to find the second largest element from a given array of integers.
+object SecondLargestElement {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50, 60, 70) // Example array
+
+    // Call the findSecondLargest function to find the second largest element
+    val secondLargest = findSecondLargest(numbers)
+
+    // Print the result
+    println(s"The second largest element in the array is: $secondLargest")
+  }
+
+  def findSecondLargest(arr: Array[Int]): Int = {
+    if (arr.length < 2) {
+      // Handle the case when the array has less than 2 elements
+      throw new IllegalArgumentException("Array must have at least two elements")
+    } else {
+      val max1 = arr.max
+      val withoutMax1 = arr.filter(_ != max1)
+      if (withoutMax1.isEmpty) {
+        // Handle the case when all elements are the same
+        throw new IllegalArgumentException("All elements are the same")
+      } else {
+        val max2 = withoutMax1.max
+        max2
+      }
+    }
+  }
+} 
+
+47.	Write a Scala program to find the second smallest element from a given array of integers.
+object SecondSmallestElement {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 5, 40, 50, 60) // Example array
+
+    // Call the findSecondSmallest function to find the second smallest element
+    val secondSmallest = findSecondSmallest(numbers)
+
+    // Print the result
+    println(s"The second smallest element in the array is: $secondSmallest")
+  }
+
+  def findSecondSmallest(arr: Array[Int]): Int = {
+    if (arr.length < 2) {
+      // Handle the case when the array has less than 2 elements
+      throw new IllegalArgumentException("Array must have at least two elements")
+    } else {
+      val min1 = arr.min
+      val withoutMin1 = arr.filter(_ != min1)
+      if (withoutMin1.isEmpty) {
+        // Handle the case when all elements are the same
+        throw new IllegalArgumentException("All elements are the same")
+      } else {
+        val min2 = withoutMin1.min
+        min2
+      }
+    }
+  }
+}
+
+
+
+48.	Write a Scala program to find the number of even and odd integers in a given array of integers.
+object CountEvenAndOdd {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 21, 30, 42, 55, 66, 77) // Example array
+
+    // Call the countEvenAndOdd function to count even and odd numbers
+    val (evenCount, oddCount) = countEvenAndOdd(numbers)
+
+    // Print the result
+    println(s"Number of even integers: $evenCount")
+    println(s"Number of odd integers: $oddCount")
+  }
+
+  def countEvenAndOdd(arr: Array[Int]): (Int, Int) = {
+    val evenCount = arr.count(num => num % 2 == 0)
+    val oddCount = arr.count(num => num % 2 != 0)
+    (evenCount, oddCount)
+  }
+}
+
+49.	Write a Scala program to get the difference between the largest and smallest values in an array of integers. The length of the array must be 1 and above. 
+object DifferenceBetweenMaxAndMin {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50) // Example array
+
+    // Call the findDifference function to get the difference
+    val difference = findDifference(numbers)
+
+    // Print the result
+    println(s"Difference between the largest and smallest values: $difference")
+  }
+
+  def findDifference(arr: Array[Int]): Int = {
+    if (arr.nonEmpty) {
+      val max = arr.max
+      val min = arr.min
+      max - min
+    } else {
+      // Handle the case when the array is empty
+      throw new IllegalArgumentException("Array must have at least one element")
+    }
+  }
+}
+
+50.	Write a Scala program to compute the average value of an array element except the largest and smallest values. 
+object AverageWithoutMinMax {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 30, 40, 50) // Example array
+
+    // Call the computeAverageWithoutMinMax function to calculate the average
+    val average = computeAverageWithoutMinMax(numbers)
+
+    // Print the result
+    println(s"Average value excluding the largest and smallest values: $average")
+  }
+
+  def computeAverageWithoutMinMax(arr: Array[Int]): Double = {
+    if (arr.length < 3) {
+      // Handle the case when the array has less than 3 elements
+      throw new IllegalArgumentException("Array must have at least three elements")
+    } else {
+      val max = arr.max
+      val min = arr.min
+      val sumWithoutMinMax = arr.filter(num => num != max && num != min).sum
+      val countWithoutMinMax = arr.length - 2 // Excluding max and min
+      sumWithoutMinMax.toDouble / countWithoutMinMax
+    }
+  }
+}
+
+51.	Write a Scala program to remove the duplicate elements of a given sorted array and return the new length of the array. 
+object RemoveDuplicatesSortedArray {
+  def main(args: Array[String]): Unit = {
+    // Define a sorted array of integers with duplicate elements (you can replace this with your own array)
+    val numbers = Array(10, 20, 20, 30, 30, 40, 50, 50) // Example array
+
+    // Call the removeDuplicatesAndReturnLength function to remove duplicates
+    val newLength = removeDuplicatesAndReturnLength(numbers)
+
+    // Print the result
+    println("Array with Duplicates:")
+    numbers.foreach(e => print(s"$e "))
+    println(s"\nNew Length of Array After Removing Duplicates: $newLength")
+  }
+
+  def removeDuplicatesAndReturnLength(arr: Array[Int]): Int = {
+    if (arr.isEmpty) {
+      // Handle the case when the array is empty
+      0
+    } else {
+      var uniqueIndex = 1
+      for (i <- 1 until arr.length) {
+        if (arr(i) != arr(i - 1)) {
+          arr(uniqueIndex) = arr(i)
+          uniqueIndex += 1
+        }
+      }
+      uniqueIndex
+    }
+  }
+}
+
+52.	Write a Scala program to find smallest and second smallest elements of a given array. 
+object SmallestAndSecondSmallest {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 20, 5, 30, 15, 40) // Example array
+
+    // Call the findSmallestAndSecondSmallest function to find the two smallest elements
+    val (smallest, secondSmallest) = findSmallestAndSecondSmallest(numbers)
+
+    // Print the result
+    println(s"The smallest element is: $smallest")
+    println(s"The second smallest element is: $secondSmallest")
+  }
+
+  def findSmallestAndSecondSmallest(arr: Array[Int]): (Int, Int) = {
+    if (arr.length < 2) {
+      // Handle the case when the array has less than 2 elements
+      throw new IllegalArgumentException("Array must have at least two elements")
+    } else {
+      var smallest = Int.MaxValue
+      var secondSmallest = Int.MaxValue
+
+      for (num <- arr) {
+        if (num < smallest) {
+          secondSmallest = smallest
+          smallest = num
+        } else if (num < secondSmallest && num != smallest) {
+          secondSmallest = num
+        }
+      }
+
+      if (secondSmallest == Int.MaxValue) {
+        // Handle the case when all elements are the same
+        throw new IllegalArgumentException("All elements are the same")
+      }
+
+      (smallest, secondSmallest)
+    }
+  }
+}
+
+53.	Write a Scala program to separate even and odd numbers of a given array of integers. Put all even numbers first, and then odd numbers.
+object SeparateEvenAndOdd {
+  def main(args: Array[String]): Unit = {
+    // Define an array of integers (you can replace this with your own array)
+    val numbers = Array(10, 21, 30, 42, 55, 66, 77) // Example array
+
+    // Call the separateEvenAndOdd function to separate even and odd numbers
+    val separatedArray = separateEvenAndOdd(numbers)
+
+    // Print the result
+    println("Original Array:")
+    numbers.foreach(e => print(s"$e "))
+    println("\nSeparated Array (Even Numbers First):")
+    separatedArray.foreach(e => print(s"$e "))
+  }
+
+  def separateEvenAndOdd(arr: Array[Int]): Array[Int] = {
+    val evenNumbers = arr.filter(num => num % 2 == 0)
+    val oddNumbers = arr.filter(num => num % 2 != 0)
+    evenNumbers ++ oddNumbers
+  }
+}
+
+String Exercises
+54.	 Write a Scala program to get the character at the given index within a given String. Also print the length of the string.
+
+object StringIndexAndLength {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Hello, World!"
+
+    // Specify the index for which you want to retrieve the character
+    val indexToGet = 7 // Change this to your desired index
+
+    // Get the character at the specified index
+    val charAtIndex = getCharacterAtIndex(inputString, indexToGet)
+
+    // Print the character and length of the string
+    println(s"Character at index $indexToGet: $charAtIndex")
+    println(s"Length of the string: ${inputString.length}")
+  }
+
+  def getCharacterAtIndex(inputString: String, index: Int): Char = {
+    if (index >= 0 && index < inputString.length) {
+      inputString.charAt(index)
+    } else {
+      throw new IndexOutOfBoundsException(s"Index $index is out of bounds for the given string.")
+    }
+  }
+}
+
+
+55.	Write a Scala program to concatenate a given string to the end of another string.
+
+object StringConcatenation {
+  def main(args: Array[String]): Unit = {
+    // Define two strings
+    val firstString = "Hello, "
+    val secondString = "World!"
+
+    // Concatenate the two strings
+    val concatenatedString = concatenateStrings(firstString, secondString)
+
+    // Print the concatenated string
+    println(s"Concatenated String: $concatenatedString")
+  }
+
+  def concatenateStrings(first: String, second: String): String = {
+    first + second
+  }
+}
+
+
+56.	Write a Scala program to test if a given string contains the specified sequence of char values.
+
+object StringContainsSequence {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "This is a sample string."
+
+    // Define the sequence you want to search for
+    val sequenceToFind = "sample"
+
+    // Test if the string contains the specified sequence
+    val containsSequence = containsSubstring(inputString, sequenceToFind)
+
+    // Print the result
+    if (containsSequence) {
+      println(s"The string contains the sequence: '$sequenceToFind'")
+    } else {
+      println(s"The string does not contain the sequence: '$sequenceToFind'")
+    }
+  }
+
+  def containsSubstring(input: String, sequence: String): Boolean = {
+    input.contains(sequence)
+  }
+}
+
+
+
+57.	Write a Scala program to create a new String object with the contents of a character array.
+	
+	object StringFromCharArray {
+  def main(args: Array[String]): Unit = {
+    // Define a character array
+    val charArray = Array('H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd')
+
+    // Create a new String from the character array
+    val newString = createStringFromCharArray(charArray)
+
+    // Print the new string
+    println("New String: " + newString)
+  }
+
+  def createStringFromCharArray(charArray: Array[Char]): String = {
+    new String(charArray)
+  }
+}
+
+
+58.	Write a Scala program to check whether a given string ends with the contents of another string.
+
+	object StringEndsWith {
+  def main(args: Array[String]): Unit = {
+    // Define the main string
+    val mainString = "Hello, World!"
+
+    // Define the string to check if it ends with
+    val endsWithString = "World!"
+
+    // Check if the main string ends with the specified string
+    val endsWith = checkEndsWith(mainString, endsWithString)
+
+    // Print the result
+    if (endsWith) {
+      println(s"The main string ends with: '$endsWithString'")
+    } else {
+      println(s"The main string does not end with: '$endsWithString'")
+    }
+  }
+
+  def checkEndsWith(main: String, endsWith: String): Boolean = {
+    main.endsWith(endsWith)
+  }
+}
+
+
+59.	Write a Scala program to check whether two String objects contain the same data.
+
+object StringEqualityCheck {
+  def main(args: Array[String]): Unit = {
+    // Define two strings
+    val string1 = "Hello, World!"
+    val string2 = "Hello, Scala!"
+
+    // Check if the two strings contain the same data
+    val areEqualUsingEquals = checkStringEqualityUsingEquals(string1, string2)
+    val areEqualUsingEqualityOperator = checkStringEqualityUsingEqualityOperator(string1, string2)
+
+    // Print the results
+    if (areEqualUsingEquals) {
+      println("The two strings are equal (using equals method).")
+    } else {
+      println("The two strings are not equal (using equals method).")
+    }
+
+    if (areEqualUsingEqualityOperator) {
+      println("The two strings are equal (using == operator).")
+    } else {
+      println("The two strings are not equal (using == operator).")
+    }
+  }
+
+  def checkStringEqualityUsingEquals(string1: String, string2: String): Boolean = {
+    string1.equals(string2)
+  }
+
+  def checkStringEqualityUsingEqualityOperator(string1: String, string2: String): Boolean = {
+    string1 == string2
+  }
+}
+
+60.	Write a Scala program to compare a given string to another string, ignoring case considerations.
+
+	object StringComparisonIgnoreCase {
+  def main(args: Array[String]): Unit = {
+    // Define two strings
+    val string1 = "Hello, World!"
+    val string2 = "hello, world!"
+
+    // Compare the two strings ignoring case
+    val areEqualIgnoreCase = compareStringsIgnoreCase(string1, string2)
+
+    // Print the result
+    if (areEqualIgnoreCase) {
+      println("The two strings are equal (ignoring case).")
+    } else {
+      println("The two strings are not equal (ignoring case).")
+    }
+  }
+
+  def compareStringsIgnoreCase(string1: String, string2: String): Boolean = {
+    string1.equalsIgnoreCase(string2)
+  }
+}
+
+
+61.	Write a Scala program to replace a specified character with another character.
+
+object CharacterReplacement {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Hello, World!"
+
+    // Define the character to replace and the replacement character
+    val charToReplace = 'o'
+    val replacementChar = 'x'
+
+    // Replace the specified character in the string
+    val modifiedString = replaceCharacter(inputString, charToReplace, replacementChar)
+
+    // Print the modified string
+    println(s"Modified String: $modifiedString")
+  }
+
+  def replaceCharacter(input: String, charToReplace: Char, replacementChar: Char): String = {
+    input.map {
+      case `charToReplace` => replacementChar
+      case otherChar => otherChar
+    }
+  }
+}
+
+
+62.	Write a Scala program to get a substring of a given string between two specified positions.
+	
+object SubstringExtraction {
+  def main(args: Array[String]): Unit = {
+    // Define the input string
+    val inputString = "Hello, World!"
+
+    // Define the start and end positions
+    val startPosition = 7 // Inclusive
+    val endPosition = 12   // Exclusive
+
+    // Get the substring between the specified positions
+    val extractedSubstring = extractSubstring(inputString, startPosition, endPosition)
+
+    // Print the extracted substring
+    println(s"Extracted Substring: $extractedSubstring")
+  }
+
+  def extractSubstring(input: String, start: Int, end: Int): String = {
+    if (start >= 0 && end >= start && end <= input.length) {
+      input.substring(start, end)
+    } else {
+      throw new IllegalArgumentException("Invalid start and end positions for substring extraction.")
+    }
+  }
+}
+
+
+
+63.	Write a Scala program to convert all the characters to lowercase, uppercase strings.
+
+object StringCaseConversion {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Hello, World!"
+
+    // Convert the string to lowercase and uppercase
+    val lowercaseString = convertToLowerCase(inputString)
+    val uppercaseString = convertToUpperCase(inputString)
+
+    // Print the lowercase and uppercase strings
+    println(s"Lowercase String: $lowercaseString")
+    println(s"Uppercase String: $uppercaseString")
+  }
+
+  def convertToLowerCase(input: String): String = {
+    input.toLowerCase
+  }
+
+  def convertToUpperCase(input: String): String = {
+    input.toUpperCase
+  }
+}
+
+
+64.	Write a Scala program to trim any leading or trailing whitespace from a given string.
+
+object StringTrimming {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string with leading and trailing whitespace
+    val inputString = "   This is a string with leading and trailing spaces.   "
+
+    // Trim the string to remove leading and trailing spaces
+    val trimmedString = trimWhitespace(inputString)
+
+    // Print the trimmed string
+    println(s"Trimmed String: '$trimmedString'")
+  }
+
+  def trimWhitespace(input: String): String = {
+    input.trim
+  }
+}
+	
+
+65.	Write a Scala program to find the maximum occurring character in a string.
+
+	object MaxOccurringCharacter {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Hello, World!"
+
+    // Find the maximum occurring character in the string
+    val maxChar = findMaxOccurringCharacter(inputString)
+
+    // Print the result
+    println(s"The maximum occurring character in the string is: '$maxChar'")
+  }
+
+  def findMaxOccurringCharacter(input: String): Char = {
+    // Create a mutable Map to store character counts
+    var charCountMap = scala.collection.mutable.Map[Char, Int]().withDefaultValue(0)
+
+    // Iterate through the characters in the string and update the count
+    for (char <- input) {
+      charCountMap(char) += 1
+    }
+
+    // Find the character with the maximum count
+    val maxCount = charCountMap.values.max
+    val maxOccurringChar = charCountMap.collect {
+      case (char, count) if count == maxCount => char
+    }.head
+
+    maxOccurringChar
+  }
+}
+
+
+66.	Write a Scala program to reverse every word in a given string.
+object ReverseWordsInString {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "Hello, World!"
+
+    // Reverse every word in the string
+    val reversedString = reverseWords(inputString)
+
+    // Print the result
+    println(s"String with reversed words: $reversedString")
+  }
+
+  def reverseWords(input: String): String = {
+    // Split the input string into words
+    val words = input.split(" ")
+
+    // Reverse each word and create a new list of reversed words
+    val reversedWords = words.map(word => word.reverse)
+
+    // Join the reversed words to create the final string
+    val reversedString = reversedWords.mkString(" ")
+
+    reversedString
+  }
+}
+
+	
+
+67.	 Write a Scala program to calculate the sum of the numbers appear in a given string.
+Sample Output:
+The given string is: it 15 is25 a 20string
+The sum of the numbers in the said string is: 60
+
+object SumOfNumbersInString {
+  def main(args: Array[String]): Unit = {
+    // Define a sample string
+    val inputString = "it 15 is25 a 20string"
+
+    // Calculate the sum of numbers in the string
+    val sum = calculateSumOfNumbers(inputString)
+
+    // Print the result
+    println(s"The given string is: $inputString")
+    println(s"The sum of the numbers in the said string is: $sum")
+  }
+
+  def calculateSumOfNumbers(input: String): Int = {
+    val numberPattern = """\d+""".r
+    val matches = numberPattern.findAllIn(input)
+    val numbers = matches.map(_.toInt)
+    numbers.sum
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+List Exercises 
+68.	 Write a Scala program to create a list in different ways.
+
+
+
+object ListCreationDemo {
+  def main(args: Array[String]): Unit = {
+    // Using List constructor
+    val list1 = List(1, 2, 3, 4, 5)
+
+    // Using Nil to create an empty list
+    val emptyList = Nil
+
+    // Using :: (cons) to build a list from individual elements
+    val list2 = 1 :: 2 :: 3 :: Nil
+
+    // Using List.range to create a range of values
+    val rangeList = List.range(1, 10, 2)
+
+    // Using a for comprehension to create a list
+    val list3 = for (i <- 1 to 5) yield i
+
+    // Using List.fill to create a list with repeated elements
+    val repeatedList = List.fill(3)("Hello")
+
+    // Printing the created lists
+    println(s"List1: $list1")
+    println(s"Empty List: $emptyList")
+    println(s"List2: $list2")
+    println(s"Range List: $rangeList")
+    println(s"List3: $list3")
+    println(s"Repeated List: $repeatedList")
+  }
+}
+
+
+
+
+
+69.	Write a Scala program to add a single element and multiple elements to a given listbuffer/list.
+
+
+import scala.collection.mutable.ListBuffer
+
+object ListBufferDemo {
+  def main(args: Array[String]): Unit = {
+    // Create a ListBuffer
+    val listBuffer = ListBuffer(1, 2, 3)
+
+    // Create a regular List
+    val list = List(4, 5, 6)
+
+    // Add a single element to the ListBuffer
+    listBuffer += 4
+
+    // Add multiple elements to the ListBuffer
+    listBuffer ++= List(5, 6, 7)
+
+    // Add a single element to the List (creates a new List)
+    val newList = list :+ 7
+
+    // Add multiple elements to the List (creates a new List)
+    val newList2 = list ++ List(8, 9, 10)
+
+    // Print the ListBuffer and Lists
+    println("ListBuffer: " + listBuffer)
+    println("List: " + list)
+    println("New List: " + newList)
+    println("New List 2: " + newList2)
+  }
+}
+
+
+
+
+
+70.	Write a Scala program to remove single and multiple elements from a given listbuffer/list.
+
+
+
+import scala.collection.mutable.ListBuffer
+
+object ListRemovalDemo {
+  def main(args: Array[String]): Unit = {
+    // Create a ListBuffer
+    val listBuffer = ListBuffer(1, 2, 3, 4, 5)
+
+    // Create a regular List
+    val list = List(1, 2, 3, 4, 5)
+
+    // Remove a single element from the ListBuffer
+    listBuffer -= 3
+
+    // Remove multiple elements from the ListBuffer
+    listBuffer --= List(4, 5)
+
+    // Filter and create a new List with some elements removed
+    val newList = list.filterNot(e => e == 3)
+
+    // Filter and create a new List with multiple elements removed
+    val newList2 = list.filterNot(e => e == 4 || e == 5)
+
+    // Print the ListBuffer and Lists
+    println("ListBuffer after removal: " + listBuffer)
+    println("List after removal: " + newList)
+    println("New List after removal: " + newList2)
+  }
+}
+
+
+
+
+
+
+71.	Write a Scala program to delete element(s) from a given List.
+
+
+
+object ListDeletionDemo {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 4, 5)
+
+    // Element(s) to be deleted
+    val elementsToDelete = List(3, 5)
+
+    // Delete element(s) from the list and create a new list
+    val newList = myList.filterNot(elementsToDelete.contains)
+
+    // Print the original list and the list after deletion
+    println("Original List: " + myList)
+    println("List after deletion: " + newList)
+  }
+}
+
+
+
+
+
+72.	Write a Scala program to iterate over a list to print the elements and calculate the sum and product of all elements of this list.
+
+
+object ListIterationDemo {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 4, 5)
+
+    // Initialize variables for sum and product
+    var sum = 0
+    var product = 1
+
+    // Iterate over the list to print elements and calculate sum and product
+    println("List Elements:")
+    for (element <- myList) {
+      println(element)
+      sum += element
+      product *= element
+    }
+
+    // Print the sum and product
+    println(s"Sum of List Elements: $sum")
+    println(s"Product of List Elements: $product")
+  }
+}
+
+73.	Write a Scala program to find the largest and smallest number from a given list.
+
+
+
+object FindLargestSmallest {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(10, 5, 8, 3, 12, 1)
+
+    // Find the largest and smallest numbers
+    val largest = myList.max
+    val smallest = myList.min
+
+    // Print the results
+    println("List of Numbers: " + myList)
+    println("Largest Number: " + largest)
+    println("Smallest Number: " + smallest)
+  }
+}
+
+
+
+
+
+
+
+
+74.	Write a Scala program to remove duplicates from a given list.
+
+
+object RemoveDuplicates {
+  def main(args: Array[String]): Unit = {
+    // Create a list with duplicates
+    val myList = List(1, 2, 2, 3, 4, 4, 5, 5)
+
+    // Remove duplicates by converting the list to a Set and back to a List
+    val uniqueList = myList.toSet.toList
+
+    // Print the original list and the list without duplicates
+    println("Original List: " + myList)
+    println("List without Duplicates: " + uniqueList)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+75.	Write a Scala program to check a given list is empty or not.
+
+object CheckListEmpty {
+  def main(args: Array[String]): Unit = {
+    // Create an empty list
+    val emptyList = List()
+
+    // Create a non-empty list
+    val nonEmptyList = List(1, 2, 3)
+
+    // Check if the lists are empty
+    val isEmpty1 = emptyList.isEmpty
+    val isEmpty2 = nonEmptyList.isEmpty
+
+    // Print the results
+    println("Is the empty list empty? " + isEmpty1)
+    println("Is the non-empty list empty? " + isEmpty2)
+  }
+}
+
+
+
+
+
+
+
+
+
+76.	Write a Scala program to find the first and last element of given list.
+
+object FindFirstLastElement {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 4, 5)
+
+    // Find the first and last elements
+    val firstElement = myList.head
+    val lastElement = myList.last
+
+    // Print the results
+    println("List of Numbers: " + myList)
+    println("First Element: " + firstElement)
+    println("Last Element: " + lastElement)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+77.	Write a Scala program to find the index of an element in a given list.
+
+
+
+
+object FindElementIndex {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(10, 20, 30, 40, 50)
+
+    // Element to find the index of
+    val elementToFind = 30
+
+    // Find the index of the element
+    val index = myList.indexOf(elementToFind)
+
+    // Check if the element was found and print the result
+    if (index != -1) {
+      println(s"Element $elementToFind found at index $index")
+    } else {
+      println(s"Element $elementToFind not found in the list")
+    }
+  }
+}
+
+
+
+78.	Write a Scala program to merge (concatenate) given lists.
+
+
+object MergeLists {
+  def main(args: Array[String]): Unit = {
+    // Create two lists
+    val list1 = List(1, 2, 3)
+    val list2 = List(4, 5, 6)
+
+    // Merge lists using the ++ operator
+    val mergedList1 = list1 ++ list2
+
+    // Merge lists using the concat method
+    val mergedList2 = list1.concat(list2)
+
+    // Print the merged lists
+    println("List 1: " + list1)
+    println("List 2: " + list2)
+    println("Merged List (using ++): " + mergedList1)
+    println("Merged List (using concat): " + mergedList2)
+  }
+}
+
+
+
+
+
+79.	Write a Scala program to find the even and odd numbers from a given list.
+
+
+object FindEvenOddNumbers {
+  def main(args: Array[String]): Unit = {
+    // Create a list of numbers
+    val myList = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    // Find even numbers
+    val evenNumbers = myList.filter(num => num % 2 == 0)
+
+    // Find odd numbers
+    val oddNumbers = myList.filter(num => num % 2 != 0)
+
+    // Print the original list, even numbers, and odd numbers
+    println("Original List: " + myList)
+    println("Even Numbers: " + evenNumbers)
+    println("Odd Numbers: " + oddNumbers)
+  }
+}
+
+
+
+
+
+
+80.	Write a Scala program to find the nth element of a given list.
+
+object FindNthElement {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(10, 20, 30, 40, 50)
+
+    // Find the nth element using the apply method
+    val n = 2 // Change this to the desired index (0-based)
+    val nthElement1 = myList(n)
+
+    // Find the nth element using drop and head methods
+    val nthElement2 = myList.drop(n).head
+
+    // Print the results
+    println("List of Numbers: " + myList)
+    println(s"The $n-th Element (using apply): $nthElement1")
+    println(s"The $n-th Element (using drop and head): $nthElement2")
+  }
+}
+
+
+
+
+
+
+
+
+81.	Write a Scala program to find an element from the last position of a given list.
+
+
+object FindElementFromLast {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(10, 20, 30, 40, 50)
+
+    // Find an element from the last position
+    val positionFromLast = 2 // Change this to the desired position from the end
+    val lastIndex = myList.length - 1
+    val elementFromLast = myList(lastIndex - positionFromLast)
+
+    // Print the results
+    println("List of Numbers: " + myList)
+    println(s"Element from the last position ($positionFromLast from the end): $elementFromLast")
+  }
+}
+
+
+
+
+
+
+
+82.	Write a Scala program to reverse a given list.
+
+object ReverseList {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 4, 5)
+
+    // Reverse the list using the reverse method
+    val reversedList = myList.reverse
+
+    // Print the original list and the reversed list
+    println("Original List: " + myList)
+    println("Reversed List: " + reversedList)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+83.	Write a Scala program to check a given list is a palindrome or not.
+
+
+object PalindromeCheck {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 2, 1)
+
+    // Check if the list is a palindrome
+    val isPalindrome = myList == myList.reverse
+
+    // Print the original list and whether it is a palindrome
+    println("Original List: " + myList)
+    if (isPalindrome) {
+      println("The list is a palindrome.")
+    } else {
+      println("The list is not a palindrome.")
+    }
+  }
+}
+
+
+
+
+
+
+
+
+84.	Write a Scala program to check whether a list contains a sublist.
+
+
+object SublistCheck {
+  def main(args: Array[String]): Unit = {
+    // Create a main list
+    val mainList = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+    // Create a sublist to check for
+    val sublistToCheck = List(3, 4, 5)
+
+    // Check if the main list contains the sublist
+    val containsSublist = mainList.sliding(sublistToCheck.length).exists(_.toList == sublistToCheck)
+
+    // Print the main list and whether it contains the sublist
+    println("Main List: " + mainList)
+    println("Sublist to Check For: " + sublistToCheck)
+    if (containsSublist) {
+      println("The main list contains the sublist.")
+    } else {
+      println("The main list does not contain the sublist.")
+    }
+  }
+}
+
+
+85.	Write a Scala program to count the number of occurrences of each element in a given list.
+
+
+object CountOccurrences {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 2, 1, 3, 4, 5, 4)
+
+    // Use groupBy to group elements and then count the occurrences
+    val occurrences = myList.groupBy(identity).mapValues(_.length)
+
+    // Print the original list and the occurrences
+    println("Original List: " + myList)
+    println("Occurrences:")
+    occurrences.foreach { case (element, count) =>
+      println(s"$element: $count")
+    }
+  }
+}
+
+
+
+
+
+
+
+
+86.	Write a Scala program to split a given list into two lists.
+object SplitList {
+  def main(args: Array[String]): Unit = {
+    // Create a list
+    val myList = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+    // Split the list into two lists at a specific index
+    val splitIndex = 5 // Change this to the desired split index
+    val (firstList, secondList) = myList.splitAt(splitIndex)
+
+    // Print the original list and the two split lists
+    println("Original List: " + myList)
+    println(s"First List (up to index $splitIndex): " + firstList)
+    println(s"Second List (from index $splitIndex): " + secondList)
+  }
+}
+
+
